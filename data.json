@@ -1,0 +1,95 @@
+{
+  "users": [
+    {
+      "id": "u1",
+      "name": "Nguyễn Văn A",
+      "username": "vana",
+      "password": "654321"
+    },
+    {
+      "id": "u2",
+      "name": "Trần Thị B",
+      "username": "tranb",
+      "password": "abcdef"
+    },
+    {
+      "id": "u1754487399611",
+      "name": "thang",
+      "username": "thang711",
+      "password": "123456"
+    }
+  ],
+  "posts": [
+    {
+      "id": "b1",
+      "title": "Lập trình React từ A đến Z",
+      "content": "React là thư viện JavaScript phổ biến để xây dựng giao diện người dùng...",
+      "authorId": "u1",
+      "visibility": "public",
+      "createdAt": "2024-07-20T10:00:00.000Z",
+      "comments": [
+        {
+          "id": "c1",
+          "userId": "u2",
+          "content": "Bài viết rất hữu ích, cảm ơn bạn!",
+          "createdAt": "2024-07-21T08:00:00.000Z"
+        },
+        {
+          "id": "c2",
+          "userId": "u1",
+          "content": "Cảm ơn bạn đã góp ý!",
+          "createdAt": "2024-07-21T09:00:00.000Z"
+        },
+        {
+          "id": "c1754485908718",
+          "userId": "u1",
+          "content": "hay",
+          "createdAt": "2025-08-06T13:11:48.718Z"
+        }
+      ]
+    },
+    {
+      "id": "b2",
+      "title": "Kỹ thuật viết API hiệu quả với Node.js",
+      "content": "Trong bài này, chúng ta sẽ tìm hiểu cách viết API RESTful hiệu quả...",
+      "authorId": "u2",
+      "visibility": "private",
+      "createdAt": "2024-07-22T14:30:00.000Z",
+      "comments": []
+    },
+    {
+      "id": "c163",
+      "title": "test",
+      "content": "<p>ddwdwdwdwdwdwdwdwdwdw</p><p></p>",
+      "visibility": "public",
+      "authorId": "u1",
+      "createdAt": "2025-08-06T13:35:22.778Z",
+      "comments": [
+        {
+          "id": "c1754487435575",
+          "userId": "u1754487399611",
+          "content": "hay",
+          "createdAt": "2025-08-06T13:37:15.575Z"
+        }
+      ]
+    },
+    {
+      "id": "06c2",
+      "title": "test3",
+      "content": "<p>xin chào</p>",
+      "visibility": "public",
+      "authorId": "u1754487399611",
+      "createdAt": "2025-08-06T13:37:39.022Z",
+      "comments": []
+    },
+    {
+      "id": "71c3",
+      "title": "hello",
+      "content": "<p>chào 2222</p>",
+      "visibility": "private",
+      "authorId": "u1754487399611",
+      "createdAt": "2025-08-06T13:38:02.880Z",
+      "comments": []
+    }
+  ]
+}
