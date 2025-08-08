@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Button, Card, CardContent, Typography } from "@mui/material";
+import { Button, Card, CardContent, Typography, CardActions, Chip, Box } from "@mui/material";
 import { AuthContext } from "../../contexts/AuthContext";
 import CommentList from "../comment/CommentList";
 import axios from "axios";
@@ -18,19 +18,36 @@ export default function BlogItem({ post, onReload }) {
     };
 
     return (
-        <Card sx={{ my: 2 }}>
-            <CardContent>
-                <Typography variant="h5">{post.title}</Typography>
-                <div dangerouslySetInnerHTML={{ __html: post.content }} />
-                <Typography variant="caption">Chế độ: {post.visibility}</Typography>
-                {isOwner && (
-                    <div style={{ marginTop: 8 }}>
-                        <Button size="small" color="error" onClick={handleDelete}>Xoá</Button>
-                        <Button size="small" component={Link} to={`/edit/${post.id}`}>Sửa</Button>
-                    </div>
-                )}
-                <CommentList post={post} />
+        <Card sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+            <CardContent sx={{ flexGrow: 1 }}>
+                <Typography variant="h5" gutterBottom>{post.title}</Typography>
+                <Box sx={{
+                    maxHeight: 100,
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    mb: 2,
+                    '& *': {
+                        fontSize: '1rem !important',
+                        fontWeight: 'normal !important'
+                    }
+                }}>
+                    <div dangerouslySetInnerHTML={{ __html: post.content }} />
+                </Box>
+                <Chip
+                    label={post.visibility === 'public' ? 'Công khai' : 'Riêng tư'}
+                    size="small"
+                    variant="outlined"
+                />
             </CardContent>
+            <CardActions sx={{ justifyContent: 'space-between', px: 2, pb: 2 }}>
+                {isOwner && (
+                    <Box>
+                        <Button size="small" color="secondary" onClick={handleDelete}>Xoá</Button>
+                        <Button size="small" component={Link} to={`/edit/${post.id}`}>Sửa</Button>
+                    </Box>
+                )}
+            </CardActions>
+            <CommentList post={post} />
         </Card>
     );
 }

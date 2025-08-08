@@ -76,7 +76,7 @@
     {
       "id": "06c2",
       "title": "test3",
-      "content": "<p>xin chào</p>",
+      "content": "<p>xin chào 44</p>",
       "visibility": "public",
       "authorId": "u1754487399611",
       "createdAt": "2025-08-06T13:37:39.022Z",
@@ -89,6 +89,15 @@
       "visibility": "private",
       "authorId": "u1754487399611",
       "createdAt": "2025-08-06T13:38:02.880Z",
+      "comments": []
+    },
+    {
+      "id": "p1754658583550",
+      "title": "monopoly",
+      "content": "<p>cờ tỷ phú </p>",
+      "visibility": "public",
+      "authorId": "u1",
+      "createdAt": "2025-08-08T13:09:43.550Z",
       "comments": []
     }
   ]

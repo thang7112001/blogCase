@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
-import {Button, TextField, MenuItem, Box, Typography} from "@mui/material";
+import { Button, TextField, MenuItem, Box, Typography, Paper, Container } from "@mui/material";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import axios from "axios";
@@ -16,8 +16,13 @@ export default function BlogForm() {
     const editor = useEditor({ extensions: [StarterKit], content: "" });
 
     const handleSubmit = async () => {
+        if (!title.trim() || !editor.getHTML().trim()) {
+            alert("Vui lòng nhập tiêu đề và nội dung.");
+            return;
+        }
         try {
             const newPost = {
+                id: `p${Date.now()}`,
                 title,
                 content: editor.getHTML(),
                 visibility,
@@ -33,27 +38,32 @@ export default function BlogForm() {
     };
 
     return (
-        <div>
-            <h2>Thêm bài viết</h2>
-            <TextField fullWidth label="Tiêu đề" value={title} onChange={e => setTitle(e.target.value)} />
-            <TextField
-                fullWidth
-                select
-                label="Chế độ hiển thị"
-                value={visibility}
-                onChange={e => setVisibility(e.target.value)}
-                sx={{ my: 2 }}
-            >
-                <MenuItem value="public">Public</MenuItem>
-                <MenuItem value="private">Private</MenuItem>
-            </TextField>
-            <Box sx={{ border: '1px solid #ccc', p: 2, borderRadius: 1, minHeight: '150px' }}>
-                <Typography variant="subtitle1" sx={{ mb: 1 }}>
-                    Nội dung
-                </Typography>
-                <EditorContent editor={editor} />
-            </Box>
-            <Button variant="contained" sx={{ mt: 2 }} onClick={handleSubmit}>Tạo bài viết</Button>
-        </div>
+        <Container maxWidth="md" sx={{ my: 4 }}>
+            <Paper elevation={2} sx={{ p: 4 }}>
+                <Typography variant="h2" gutterBottom>Thêm bài viết mới</Typography>
+                <TextField
+                    fullWidth
+                    label="Tiêu đề"
+                    value={title}
+                    onChange={e => setTitle(e.target.value)}
+                    margin="normal"
+                />
+                <TextField
+                    fullWidth
+                    select
+                    label="Chế độ hiển thị"
+                    value={visibility}
+                    onChange={e => setVisibility(e.target.value)}
+                    margin="normal"
+                >
+                    <MenuItem value="public">Công khai</MenuItem>
+                    <MenuItem value="private">Riêng tư</MenuItem>
+                </TextField>
+                <Box sx={{ border: '1px solid #ccc', p: 2, borderRadius: 1, minHeight: 200, my: 2, '& .ProseMirror': { minHeight: 150 } }}>
+                    <EditorContent editor={editor} />
+                </Box>
+                <Button fullWidth variant="contained" size="large" onClick={handleSubmit}>Tạo bài viết</Button>
+            </Paper>
+        </Container>
     );
 }

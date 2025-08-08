@@ -6,10 +6,13 @@ import BlogForm from "./components/blog/BlogForm";
 import EditBlog from "./components/blog/EditBlog";
 import UserProfile from "./components/user/UserProfile";
 import Header from "./components/layout/Header";
+import theme from "./components/layout/theme";
+import { ThemeProvider } from '@mui/material/styles';
 
 function App() {
   return (
     <>
+        <ThemeProvider theme={theme}>
             <Header />
             <Routes>
                 <Route path="/" element={<BlogList />} />
@@ -19,6 +22,7 @@ function App() {
                 <Route path="/edit/:id" element={<EditBlog />} />
                 <Route path="/profile" element={<UserProfile />} />
             </Routes>
+        </ThemeProvider>
     </>
   )
 }

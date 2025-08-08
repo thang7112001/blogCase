@@ -29,7 +29,7 @@ export default function CommentList({ post }) {
 
         await axios.put(`${URL_POST}/${post.id}`, updatedPost);
         setContent("");
-        window.location.reload(); // Hoặc setState lại để tránh reload
+        window.location.reload();
     };
 
     return (

@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { Button, TextField, Container } from "@mui/material";
+import { Button, TextField, Container, Paper, Typography, Box } from "@mui/material";
 import { AuthContext } from "../../contexts/AuthContext";
 import axios from "axios";
 import { URL_USER } from "../../api/url";
@@ -11,7 +11,8 @@ export default function Login() {
     const { login } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (e) => {
+        e.preventDefault();
         try {
             const res = await axios.get(URL_USER);
             const found = res.data.find(u => u.username === username && u.password === password);
@@ -27,11 +28,46 @@ export default function Login() {
     };
 
     return (
-        <Container maxWidth="sm">
-            <h2>Đăng nhập</h2>
-            <TextField fullWidth label="Username" margin="normal" value={username} onChange={e => setUsername(e.target.value)} />
-            <TextField fullWidth label="Password" type="password" margin="normal" value={password} onChange={e => setPassword(e.target.value)} />
-            <Button fullWidth variant="contained" onClick={handleSubmit}>Login</Button>
+        <Container component="main" maxWidth="xs">
+            <Paper elevation={3} sx={{ mt: 8, p: 4, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <Typography component="h1" variant="h5">
+                    Đăng nhập
+                </Typography>
+                <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
+                    <TextField
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="username"
+                        label="Tên đăng nhập"
+                        name="username"
+                        autoComplete="username"
+                        autoFocus
+                        value={username}
+                        onChange={e => setUsername(e.target.value)}
+                    />
+                    <TextField
+                        margin="normal"
+                        required
+                        fullWidth
+                        name="password"
+                        label="Mật khẩu"
+                        type="password"
+                        id="password"
+                        autoComplete="current-password"
+                        value={password}
+                        onChange={e => setPassword(e.target.value)}
+                    />
+                    <Button
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        sx={{ mt: 3, mb: 2 }}
+                    >
+                        Đăng nhập
+                    </Button>
+                </Box>
+            </Paper>
         </Container>
     );
 }
