@@ -98,7 +98,14 @@
       "visibility": "public",
       "authorId": "u1",
       "createdAt": "2025-08-08T13:09:43.550Z",
-      "comments": []
+      "comments": [
+        {
+          "id": "c1754913383323",
+          "userId": "u1754487399611",
+          "content": "=))",
+          "createdAt": "2025-08-11T11:56:23.323Z"
+        }
+      ]
     }
   ]
 }

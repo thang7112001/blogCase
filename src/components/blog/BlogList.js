@@ -4,6 +4,7 @@ import { URL_POST } from "../../api/url";
 import BlogItem from "./BlogItem";
 import { AuthContext } from "../../contexts/AuthContext";
 import {Container, Grid, Typography} from "@mui/material";
+import TextType from "../animation/TextAnimation";
 
 export default function BlogList() {
     const { user } = useContext(AuthContext);
@@ -20,8 +21,15 @@ export default function BlogList() {
 
     return (
         <Container maxWidth="lg" sx={{ py: 4 }}>
-            <Typography variant="h2" gutterBottom>
-                Bài viết mới nhất
+            <Typography variant="h2">
+            <TextType text={["My Blog","Nơi để kết nối và chia sẻ!"]}
+                      typingSpeed={100}
+                      pauseDuration={1500}
+                      showCursor={true}
+                      cursorCharacter="_"
+                      textColors={['#34495E']}
+                      variant
+            ></TextType>
             </Typography>
             <Grid container spacing={4}>
                 {posts.map(p => (
